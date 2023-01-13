@@ -15,8 +15,10 @@ FROM        debian:buster
 LABEL       "author"="hohayrap"
 
 RUN         apt update &&\
-            apt upgrade &&\
+            apt upgrade -y &&\
             apt install -y nginx openssl
+
+WORKDIR	    /etc/nginx
 
 RUN         mkdir -p /etc/nginx/ssl
 
@@ -30,4 +32,11 @@ RUN         mkdir -p /run/nginx
 
 COPY        ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT  ["nginx", "-g", "deamon off;"]
+COPY	    ./tools/configure.sh ./
+
+
+RUN	    chmod 766 ./configure.sh
+
+ENTRYPOINT  ["/etc/nginx/configure.sh"]
+
+CMD         ["nginx", "-g", "daemon off;"]

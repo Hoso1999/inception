@@ -15,7 +15,7 @@ FROM        debian:buster
 LABEL       "author"="hohayrap"
 
 RUN         apt update &&\
-            apt upgrade &&\
+            apt upgrade -y &&\
             apt install -y wget curl; \
             apt install -y php php-fpm php-mysqli mariadb-client
 

@@ -43,8 +43,6 @@ services:
     nginx:
         build:
             context: ./requirements/nginx/
-            args:
-                - WORDPRESS_HOST=wordpress
         image: nginx
         container_name: c_nginx
         env_file:

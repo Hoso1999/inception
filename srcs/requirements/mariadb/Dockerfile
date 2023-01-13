@@ -14,9 +14,9 @@ FROM        debian:buster
 
 LABEL       "author"="hohayrap"
 
-RUN         apt update &&\
-            apt upgrade &&\
-            apt install mariadb-server mariadb-client mariadb
+RUN         apt update && \
+	    apt upgrade -y && \
+	    apt install -y mariadb-server mariadb-client
 
 COPY        ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
