@@ -22,13 +22,11 @@ services:
         networks:
             - inception
         volumes:
-            - db_data:/var/lib/mysql
+            - mariadb_data:/var/lib/mysql/
         restart: on-failure
     wordpress:
         build:
             context: ./requirements/wordpress/
-            args:
-                - MYSQL_HOST=mariadb
         image: wordpress
         container_name: c_wordpress
         env_file:
@@ -66,7 +64,7 @@ volumes:
             device: $HOME/data/wordpress
             o: bind
             type: none
-    db_data:
+    mariadb_data:
         driver_opts:
             device: $HOME/data/mariadb
             o: bind

@@ -23,7 +23,7 @@ stop:
 clean:		down
 			docker image prune
 			docker rmi mariadb wordpress nginx
-			docker volume rm srcs_db_data srcs_wordpress_data
+			docker volume rm srcs_mariadb_data srcs_wordpress_data
 			sudo rm -rf $(MOUNT_DIR)/mariadb
 			sudo rm -rf $(MOUNT_DIR)/wordpress
 

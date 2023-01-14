@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 
 
 if [ ! -d "/run/mysqld" ];
@@ -7,6 +7,7 @@ then
 	chown -R mysql:mysql /run/mysqld
 fi
 
+mkdir -p /var/lib/mysql
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ];
 then
 	mysql_install_db;
